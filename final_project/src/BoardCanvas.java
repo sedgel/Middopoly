@@ -61,6 +61,71 @@ public class BoardCanvas extends Canvas implements MouseListener {
         setFont(new Font("Arial", Font.PLAIN, 16));
         addMouseListener(this);
 	
-
-
+	public void paint(Graphics g) {
+		new Board();
+	}
+	
+	// creates panel with setup and game play actions	
+	public Panel gamePlay() {
+		Panel gamePlay = new Panel();
+		
+		Panel play = new Panel();
+		play.setLayout(new FlowLayout());
+		Button roll = new Button("roll"));
+		Button endTurn = new Button("end turn"));
+		Button buy = new Button("buy");
+		play.add(roll);
+		play.add(endTurn);
+		play.add(buy);
+		
+		Panel setUp = new Panel();
+		setUp.setLayout(new FlowLayout());
+		Choice numPlayers = new Choice();
+		numPlayers.add("2");
+		numPlayers.add("3");
+		numPlayers.add("4");
+		Choice gameDuration = new Choice();
+		gameDuration.add("10 rounds");
+		gameDuration.add("20 rounds");
+		Button newGame = new Button("new game");
+		setUp.add(numPlayers);
+		setUp.add(gameDuration);
+		setUP.add(newGame);
+		
+		
+		gamePlay.setLayout(new GridLayout(1,2));
+		gamePlay.add(play);
+		gamePlay.add(setUp);
+		
+		return gamePlay;
+	}
+	
+	//creates panel with the board	
+	public Panel gameBoard(){
+		Panel gameBoard = new Panel()
+		Panel tiles = new Panel();
+		tiles.setLayout(new GridLayout(1,11,2,2));
+		Panel tiles2 = new Panel();
+		tiles.setLayout(new GridLayout(9,1,2,2));
+		Label boardCenter = new Label("MIDDOPOLY");
+		
+		gameBoard.setLayout(new BorderLayout());
+		gameBoard.add("North", tiles);
+		gameBoard.add("South", tiles);
+		gameBoard.add("East", tiles2);
+		gameBoard.add("West", tiles2);
+		gameBoard.add("Center", boardCenter);
+		
+		return gameBoard;		
+	}
+	
+	// creates drawing that includes gamePlay and gameBoard panels
+	public Board() {
+		Panel p1 = new gamePlay();
+		Panel p2 = new gameBoard();
+		
+		this.setLayout(new BorderLayout());
+		this.add("North", p1);
+		this.add("Center", p2);
+	}	
 }
